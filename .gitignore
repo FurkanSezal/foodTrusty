@@ -1,0 +1,9 @@
+nextjs
+.env
+cache
+artifacts
+pinata.js
+node_modules
+test
+scripts
+deployments
