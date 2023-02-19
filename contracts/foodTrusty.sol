@@ -53,24 +53,64 @@ contract foodTrusty is Ownable {
         productID++;
     }
 
-    function addRestaurant(address _restaurant) public onlyOwner {
+    function addRestaurant(address _restaurant) public {
+        require(msg.sender == owner() || admin[msg.sender]);
         restaurant[_restaurant] = true;
     }
 
-    function addGrower(address _grower) public onlyOwner {
+    function addGrower(address _grower) public {
+        require(msg.sender == owner() || admin[msg.sender]);
         grower[_grower] = true;
     }
 
-    function addSlaughter(address _slaughter) public onlyOwner {
+    function addSlaughter(address _slaughter) public {
+        require(msg.sender == owner() || admin[msg.sender]);
         slaughter[_slaughter] = true;
     }
 
-    function addManufacturer(address _manufacturer) public onlyOwner {
+    function addManufacturer(address _manufacturer) public {
+        require(msg.sender == owner() || admin[msg.sender]);
         manufacturer[_manufacturer] = true;
     }
 
-    function addWholesaler(address _wholesaler) public onlyOwner {
+    function addWholesaler(address _wholesaler) public {
+        require(msg.sender == owner() || admin[msg.sender]);
         wholesaler[_wholesaler] = true;
+    }
+
+    function addAdmin(address _admin) public {
+        require(msg.sender == owner());
+        admin[_admin] = true;
+    }
+
+    function removeRestaurant(address _restaurant) public {
+        require(msg.sender == owner() || admin[msg.sender]);
+        restaurant[_restaurant] = false;
+    }
+
+    function removeGrower(address _grower) public {
+        require(msg.sender == owner() || admin[msg.sender]);
+        grower[_grower] = false;
+    }
+
+    function removeSlaughter(address _slaughter) public {
+        require(msg.sender == owner() || admin[msg.sender]);
+        slaughter[_slaughter] = false;
+    }
+
+    function removeManufacturer(address _manufacturer) public {
+        require(msg.sender == owner() || admin[msg.sender]);
+        manufacturer[_manufacturer] = false;
+    }
+
+    function removeWholesaler(address _wholesaler) public {
+        require(msg.sender == owner() || admin[msg.sender]);
+        wholesaler[_wholesaler] = false;
+    }
+
+    function removeAdmin(address _admin) public {
+        require(msg.sender == owner());
+        admin[_admin] = false;
     }
 
     function getProductById(
